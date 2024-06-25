@@ -10,8 +10,8 @@ export function ProductCard({id = -1, name, price, imageUrl}: Product): ReactEle
   const {increaseCartQuantity} = useShoppingCart()
 
   return (
-      <Card className="m-2">
-        <Card.Img className="my-2" variant="top" src={imageUrl} height="300px"
+      <Card className="h-100">
+        <Card.Img className="p-2" variant="top" src={imageUrl} height="300px"
                   style={{objectFit: "scale-down"}}/>
         <Card.Body className="d-flex flex-column">
           <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
@@ -28,6 +28,9 @@ export function ProductCard({id = -1, name, price, imageUrl}: Product): ReactEle
                     className="mt-1 mt-md-0 col-12 col-md-3"><FontAwesomeIcon
                 icon={faCartShopping}/></Button>
           </div>
+            <div>
+
+            </div>
         </Card.Body>
       </Card>
   )

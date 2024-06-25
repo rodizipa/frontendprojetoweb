@@ -1,4 +1,4 @@
-import {Offcanvas, Stack} from "react-bootstrap";
+import {Button, Card, Offcanvas, Stack} from "react-bootstrap";
 import {useShoppingCart} from "../../context/ShoppingCartContext.tsx";
 import {CartItem} from "./CartItem.tsx";
 import {formatCurrency} from "../../utilities/formatCurrency.ts";
@@ -26,12 +26,24 @@ export function ShoppingCart({isOpen}: ShoppingCartProps) {
                 <CartItem key={item.id} {...item}/>
             ))}
 
-            <div className="ms-auto fw-bold fs-5">
+            <div className="ms-auto mt-3 fw-bold fs-5">
               Total {formatCurrency(cartItems.reduce((total, cartItem) => {
               const i = data?.find(i => i.id === cartItem.id);
               return total + (i?.price || 0) * cartItem.quantity;
             }, 0))}
             </div>
+
+              <Button variant="outline-success">
+                  Finalizar Compra
+              </Button>
+
+              <Card border="info">
+                  <Card.Body>
+                      <span className="text-muted align-content-center text-center">
+                          Para editar a quantidade, visite a página de detalhes do item.
+                      </span>
+                  </Card.Body>
+              </Card>
           </Stack>
         </Offcanvas.Body>
       </Offcanvas>
