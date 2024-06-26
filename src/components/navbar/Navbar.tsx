@@ -1,11 +1,12 @@
 import {Button, Container, Nav, Navbar as NavbarBs} from "react-bootstrap";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import './Navbar.scss'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartShopping, faUser} from "@fortawesome/free-solid-svg-icons";
 import {useShoppingCart} from "../../context/ShoppingCartContext.tsx";
 
 export function Navbar() {
+  const navigate = useNavigate();
   const {openCart, cartQuantity} = useShoppingCart()
   return (
       <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
@@ -17,7 +18,7 @@ export function Navbar() {
           </Nav>
 
           <Button className="me-1">
-            <FontAwesomeIcon icon={faUser}/> Login
+            <FontAwesomeIcon onClick={() => navigate(`/login`,{replace:true})} icon={faUser}/> Login
           </Button>
           <Button
               onClick={openCart}
