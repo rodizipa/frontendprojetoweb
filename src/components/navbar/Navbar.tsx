@@ -12,8 +12,8 @@ export function Navbar() {
         <Container>
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to={"/"}>Home</Nav.Link>
-            <Nav.Link as={NavLink} to={"/product"}>Produtos</Nav.Link>
-            <Nav.Link as={NavLink} to={"/category"}>Categorias</Nav.Link>
+            {/*<Nav.Link as={NavLink} to={"/product"}>Produtos</Nav.Link>*/}
+            {/*<Nav.Link as={NavLink} to={"/category"}>Categorias</Nav.Link>*/}
           </Nav>
 
           <Button className="me-1">

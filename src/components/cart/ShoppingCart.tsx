@@ -21,7 +21,7 @@ export function ShoppingCart({isOpen}: ShoppingCartProps) {
            Seu carrinho está vazio, adicione um produto.
           </span>}
 
-          <Stack gap={3}>
+          <Stack gap={3} className="mb-auto">
             {cartItems.map((item) => (
                 <CartItem key={item.id} {...item}/>
             ))}
@@ -37,7 +37,7 @@ export function ShoppingCart({isOpen}: ShoppingCartProps) {
                   Finalizar Compra
               </Button>
 
-              <Card border="info">
+              <Card border="info" className="mt-auto">
                   <Card.Body>
                       <span className="text-muted align-content-center text-center">
                           Para editar a quantidade, visite a página de detalhes do item.

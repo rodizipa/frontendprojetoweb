@@ -5,9 +5,11 @@ import {Product} from "../../data/model/Product.ts";
 import {faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useShoppingCart} from "../../context/ShoppingCartContext.tsx";
+import {useNavigate} from "react-router-dom";
 
 export function ProductCard({id = -1, name, price, imageUrl}: Product): ReactElement {
-  const {increaseCartQuantity} = useShoppingCart()
+  const {increaseCartQuantity} = useShoppingCart();
+  const navigate = useNavigate();
 
   return (
       <Card className="h-100">
@@ -23,7 +25,7 @@ export function ProductCard({id = -1, name, price, imageUrl}: Product): ReactEle
             </span>
           </Card.Title>
           <div className="mt-auto text-center gap-2">
-            <Button className="col-12 col-md-6 me-2">Detalhes</Button>
+            <Button onClick={() => navigate(`/product/${id}`, {replace: true})} className="col-12 col-md-6 me-2">Detalhes</Button>
             <Button variant="success" onClick={() => increaseCartQuantity(id)}
                     className="mt-1 mt-md-0 col-12 col-md-3"><FontAwesomeIcon
                 icon={faCartShopping}/></Button>

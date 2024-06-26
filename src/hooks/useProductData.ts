@@ -13,6 +13,21 @@ const saveProductData = async (product: Product) => {
   return res;
 }
 
+const findProductById = async (id: number): AxiosPromise<Product> => {
+  const res = axios.get(`${environment.API_URL}/product/${id}`);
+  return res;
+}
+
+export function FindProductById(id: number) {
+  const query = useQuery({
+    queryFn: () => findProductById(id),
+    queryKey: ['product-by-id'],
+    retry: 2
+  })
+  return {...query, data: query.data?.data}
+}
+
+
 export function FindAllProducts() {
   const query = useQuery({
     queryFn: findAllProductsData,

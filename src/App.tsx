@@ -4,6 +4,7 @@ import {Container} from 'react-bootstrap';
 import ListProducts from "./pages/produtos/ListProducts.tsx";
 import {Navbar} from "./components/navbar/Navbar.tsx";
 import {ShoppingCartProvider} from "./context/ShoppingCartContext.tsx";
+import {ProductPage} from "./pages/produtos/ProductPage.tsx";
 
 function App() {
 
@@ -13,10 +14,10 @@ function App() {
       <ShoppingCartProvider>
         <Navbar/>
         <Container className="mb-4">
-          <Routes>
-            {/*<Route path="/" element={<App/>}/>*/}
-            <Route path="/" element={<ListProducts/>}/>
-          </Routes>
+            <Routes>
+              <Route path="/product/:id" element={<ProductPage/>}/>
+              <Route path="/" element={<ListProducts/>}/>
+            </Routes>
         </Container>
       </ShoppingCartProvider>
     </>
