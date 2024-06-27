@@ -12,7 +12,7 @@ function ListProducts() {
         <Row xs={1} md={3} className="g-3">
             {data?.map(p =>
                 <Col>
-                  <ProductCard {...p}/>
+                  <ProductCard key={p.id} {...p}/>
                 </Col>
             )
             }

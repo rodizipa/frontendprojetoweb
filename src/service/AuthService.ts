@@ -5,11 +5,10 @@ import {UserProfileToken} from "../data/model/User.ts";
 
 export const loginAPI = async (username: string, password: string) => {
   try {
-    const data = await axios.post<UserProfileToken>(`${environment.API_URL}/login`, {
+    return await axios.post<UserProfileToken>(`${environment.API_URL}/login`, {
       username: username,
       password: password
     });
-    return data;
   } catch (err) {
     handleError(err);
   }

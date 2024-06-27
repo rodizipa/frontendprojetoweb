@@ -7,7 +7,14 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useShoppingCart} from "../../context/ShoppingCartContext.tsx";
 import {useNavigate} from "react-router-dom";
 
-export function ProductCard({id = -1, name, price, imageUrl}: Product): ReactElement {
+type Prop = {
+    id: number;
+    name: string;
+    price: number;
+    imageUrl: string;
+}
+
+export function ProductCard({id = -1, name, price, imageUrl}: Prop): ReactElement {
   const {increaseCartQuantity} = useShoppingCart();
   const navigate = useNavigate();
 

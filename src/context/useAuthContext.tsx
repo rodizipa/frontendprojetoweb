@@ -36,13 +36,13 @@ export const AccountProvider = ({children}: Props) => {
   ) => {
     await registerAPI(username, password, displayName).then(res => {
       if (res) {
-        navigate("/login");
+        navigate("/login", {replace: true});
       }
     });
   }
 
   const isLoggedIn = () => {
-    return !!token;
+    return token && token != "";
   }
 
   const logout = () => {

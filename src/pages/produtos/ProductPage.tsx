@@ -36,6 +36,9 @@ export function ProductPage() {
           </Card.Title>
           {data != null && <Card.Text className="border border-5 p-3 text-center">
             {data?.description}
+            <br/>
+            <br/>
+            Categoria: {data?.category?.name}
           </Card.Text>}
           <div className="text-center gap-2">
             {data != null && quantity === 0 ? (
