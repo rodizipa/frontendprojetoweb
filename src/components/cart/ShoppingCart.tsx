@@ -4,20 +4,30 @@ import {CartItem} from "./CartItem.tsx";
 import {formatCurrency} from "../../utilities/formatCurrency.ts";
 import {FindAllProducts} from "../../hooks/useProductData.ts";
 import {useAuth} from "../../context/useAuthContext.tsx";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {useNavigate} from "react-router-dom";
-import {SaveCart, SaveCartAPI} from "../../service/OrderService.ts";
+import {SaveCart} from "../../service/OrderService.ts";
 
 type ShoppingCartProps = {
     isOpen: boolean
 }
 
 export function ShoppingCart({isOpen}: ShoppingCartProps) {
-    const HandleSaveData = () => SaveCart();
-    const {isLoggedIn} = useAuth();
-    const {data} = FindAllProducts();
-    const {closeCart, cartItems, cartQuantity} = useShoppingCart();
+  const {isLoggedIn, logout} = useAuth();
+  const {data} = FindAllProducts();
+  const {closeCart, cartItems, cartQuantity, removeFromCart} = useShoppingCart();
+
+    const HandleSaveData = () => {
+      SaveCart(cartItems).then(r => {
+        if (r){
+          cartItems.forEach(i => removeFromCart(i.id));
+          closeCart();
+        }
+      }).catch(e => {
+        if (e?.data?.status === "401"){
+          logout();
+        }
+      });
+    }
+
     return (
         <Offcanvas show={isOpen} placement="end" onHide={closeCart}>
             <Offcanvas.Header closeButton>

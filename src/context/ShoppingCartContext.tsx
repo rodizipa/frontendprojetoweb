@@ -17,7 +17,7 @@ type ShoppingCartContext = {
   removeFromCart: (id: number) => void
 }
 
-type CartItem = {
+export type CartItem = {
   id: number,
   quantity: number
 }

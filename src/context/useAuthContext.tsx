@@ -41,9 +41,7 @@ export const AccountProvider = ({children}: Props) => {
     });
   }
 
-  const isLoggedIn = () => {
-    return token && token != "";
-  }
+  const isLoggedIn = ():boolean => (token != null && token != "")
 
   const logout = () => {
     setToken("");

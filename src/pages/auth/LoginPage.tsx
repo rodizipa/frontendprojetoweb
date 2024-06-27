@@ -10,7 +10,13 @@ export function Login() {
   const [password, setPassword] = useState("");
   const {loginUser} = useAuth();
   const handleLogin = (username: string, password: string) => {
-    loginUser(username, password);
+    try {
+      loginUser(username, password);
+    } catch {
+      setUsername("");
+      setPassword("");
+    }
+
   }
 
   return (
